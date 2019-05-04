@@ -17,8 +17,7 @@ defmodule Dictionary.WordList do
   def start() do
     @word_list_file_name
     |> Path.expand(__DIR__ <> "/../..")
-    |> File.open! 
-    |> IO.read(:all) 
+    |> File.read!()
     |> String.split("\n")
   end
 
