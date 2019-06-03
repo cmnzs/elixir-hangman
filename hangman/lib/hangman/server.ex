@@ -9,10 +9,13 @@ defmodule Hangman.Server do
 
   # start_link runs in the client code
   def start_link() do
+    Hangman.Counter.increment()
+    IO.inspect(Hangman.Counter.value(), label: "Num clients")
     GenServer.start_link(__MODULE__, nil)
   end
 
   def init(_) do
+    IO.inspect(label: "Starting server (init)")
     { :ok, Game.new_game() }
   end
 
